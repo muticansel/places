@@ -43,6 +43,7 @@ export default function App() {
             component={AddPlace}
             options={{
               title: "Add a New Place",
+              headerBackTitle: "Back",
             }}
           />
         </Stack.Navigator>
