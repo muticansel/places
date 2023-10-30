@@ -16,7 +16,6 @@ const LocationPicker = () => {
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
 
-  // AIzaSyDytmtzorBC6xybU4Dstzs9f_jbgTMzNp4
   async function verifyPermissions() {
     if (
       locationPermissionInformation.status === PermissionStatus.UNDETERMINED
