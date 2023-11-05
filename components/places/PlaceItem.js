@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     borderRadius: 6,
     marginVertical: 12,
+    marginHorizontal: 8,
     backgroundColor: Colors.primary500,
     elevation: 2,
     shadowColor: "black",
