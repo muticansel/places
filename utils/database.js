@@ -27,12 +27,12 @@ export function init() {
   return promise;
 }
 
-export function insertPlace({ title, imageUri, address, lat, lng }) {
+export function insertPlace({ title, imageUri, address, location }) {
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
       tx.executeSql(
         `INSERT INTO places (title, imageUri, address, lat, lng) VALUES (?, ?, ?, ?, ?);`,
-        [title, imageUri, address, lat, lng],
+        [title, imageUri, address, location.lat, location.lng],
         (_, result) => {
           resolve(result);
         },
