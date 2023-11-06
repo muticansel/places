@@ -89,22 +89,18 @@ export function fetchPlaceDetails(id) {
         `SELECT * FROM places WHERE id = ?`,
         [id],
         (_, result) => {
-          if (!result.rows.length) {
-            reject(new Error("No place found!"));
-          }
-
-          const dp = result.rows.item(0);
+          const dbPlace = result.rows.item(0);
 
           resolve(
             new Place(
-              dp.title,
-              dp.imageUri,
+              dbPlace.title,
+              dbPlace.imageUri,
               {
-                address: dp.address,
-                lat: dp.lat,
-                lng: dp.lng,
+                address: dbPlace.address,
+                lat: dbPlace.lat,
+                lng: dbPlace.lng,
               },
-              dp.id
+              dbPlace.id
             )
           );
         },
