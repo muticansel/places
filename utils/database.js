@@ -81,3 +81,39 @@ export function fetchPlaces() {
 
   return promise;
 }
+
+export function fetchPlaceDetails(id) {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((tx) => {
+      tx.executeSql(
+        `SELECT * FROM places WHERE id = ?`,
+        [id],
+        (_, result) => {
+          if (!result.rows.length) {
+            reject(new Error("No place found!"));
+          }
+
+          const dp = result.rows.item(0);
+
+          resolve(
+            new Place(
+              dp.title,
+              dp.imageUri,
+              {
+                address: dp.address,
+                lat: dp.lat,
+                lng: dp.lng,
+              },
+              dp.id
+            )
+          );
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+
+  return promise;
+}

@@ -6,14 +6,14 @@ function PlaceItem({ place, onSelect }) {
   return (
     <Pressable
       style={({ pressed }) => [styles.item, pressed && styles.pressed]}
-      onPress={onSelect}
+      onPress={() => onSelect(place.id)}
     >
       <Image source={{ uri: place.imageUri }} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.title}>{place.title}</Text>
         <Text style={styles.address}>{place.address}</Text>
       </View>
-    </Pressable>
+    </Pressable >
   );
 }
 
